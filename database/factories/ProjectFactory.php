@@ -17,7 +17,14 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => fake()->words(3, true),
+            'description' => fake()->boolean()
+            ? fake()->paragraph()
+            : '',
+            'main_image' => fake()->imageUrl(),
+            'release_date' => fake()->date(),
+            'repo_link' => fake()->url(),
+
         ];
     }
 }
