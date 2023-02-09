@@ -8,6 +8,14 @@ use App\Http\Controllers\MainController;
 Route::get('/', [MainController::class, 'home'])
     ->name('home');
 
+Route::middleware(['auth', 'verified'])
+    ->name('logged.')
+    ->prefix('logged')
+    ->group(function () {
+        Route::get('/', [MainController::class, 'logged'])
+            ->name('logged');
+    });
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
