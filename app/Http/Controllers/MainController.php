@@ -11,20 +11,21 @@ use App\Models\Project;
 
 class MainController extends Controller
 {
+    // Home Pubblic All Contents
     public function home()
     {
-        $projects = Project::orderBy('created_at', 'DESC')->get();
+        $projects = Project::all();
 
         return view('pages.home', compact('projects'));
     }
 
+    // Logged Private All Contents
     public function logged()
     {
-        $projects = Project::orderBy('created_at', 'DESC')->get();
+        $projects = Project::all();
 
         return view('pages.logged', compact('projects'));
     }
-
     //SHOW:
     public function projectShow(Project $project)
     {
@@ -56,7 +57,7 @@ class MainController extends Controller
 
         $project = Project::create($data);
 
-        return redirect()->route('project.show', $project);
+        return redirect()->route('home', $project);
     }
 
     public function edit(Project $project)
@@ -75,9 +76,13 @@ class MainController extends Controller
             'repo_link' => 'required|string|unique:projects,repo_link,' . $project->id,
         ]);
 
-        $project->update($data);
+
         $img_path = Storage::put('uploads', $data['main_image']);
         $data['main_image'] = $img_path;
+
+        $project->update($data);
+
+        $project->save();
 
         return redirect()->route('project.show', $project);
     }
@@ -89,4 +94,5 @@ class MainController extends Controller
 
         return redirect()->route('home');
     }
+
 }
