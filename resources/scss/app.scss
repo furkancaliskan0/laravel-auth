@@ -1,6 +1,52 @@
 @import '~bootstrap/scss/bootstrap';
 
+body{
+  color: #000000;
+  background-image: url('img/image.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-style: italic;
+}
 
-img.project-img{
-  width: 500px;
+
+.main{
+    h2{
+        color: #000000;
+    }
+
+  .form{
+      display: flex;
+      flex-wrap: wrap;
+      margin-inline: -20px;
+      .card{
+        display: flex;
+        flex-wrap: wrap;
+        margin-inline: -20px;
+          background-color: #ffffffa9;
+          border: 1px solid #fff;
+          width: calc(100% / 2 - 40px);
+          margin-inline: 20px;
+
+       
+      }
+
+      p, span{
+          color: #000000;
+      }
+  }
+}
+span{
+  display: block;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+img{
+  width: 250px;
+  height: 200px;
 }
