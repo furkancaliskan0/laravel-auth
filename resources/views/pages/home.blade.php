@@ -3,8 +3,10 @@
 @section('content')
     <div class="container main">
         <h1  class="text-center black my-4">Projects</h1>
+        
         @auth
             <a href="{{ route('admin.project.store') }}">
+                Create a new repository
             </a>
         @endauth
         <div class="form">
